@@ -7,29 +7,21 @@
  * For full license statement see the LICENSE file.
  */
 
-namespace Aurora\Modules\MailMultiAccounts;
+namespace Aurora\Modules\MailMultiAccountsPlugin;
 
 /**
  * @package Modules
  */
 class Module extends \Aurora\System\Module\AbstractModule
 {
-	public $oApiMailManager = null;
-	public $oApiAccountsManager = null;
-	public $oApiServersManager = null;
-	public $oApiIdentitiesManager = null;
-	
-	/* 
-	 * @var $oApiFileCache \Aurora\System\Managers\Filecache\Manager 
-	 */	
-	public $oApiFileCache = null;
-	
 	public function init() 
 	{
 		$this->oMailModule = \Aurora\System\Api::GetModule('Mail');
 	
 		$this->subscribeEvent('Mail::CreateAccount::before', array($this, 'onBeforeCreateAccount'));
 		$this->subscribeEvent('Mail::CreateAccount::after', array($this, 'onAfterCreateAccount'));
+		
+		$this->subscribeEvent('Mail::GetSettings::after', array($this, 'onAfterGetSettings'));
 	}
 	
 	public function onBeforeCreateAccount($aArguments, &$mResult)
