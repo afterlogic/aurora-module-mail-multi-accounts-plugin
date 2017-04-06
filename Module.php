@@ -37,4 +37,16 @@ class Module extends \Aurora\System\Module\AbstractModule
 		
 		return false;
 	}
+	
+	/**
+	 * 
+	 * @param array $aArguments
+	 * @param mixed $mResult
+	 */
+	public function onAfterGetSettings($aArguments, &$mResult)
+	{
+		$mResult['AllowMultiAccounts'] = true;
+		
+		return false;
+	}
 }
