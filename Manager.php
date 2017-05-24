@@ -8,12 +8,9 @@
  * For full statements of the licenses see LICENSE-AFTERLOGIC and LICENSE-AGPL3 files.
  */
 
-/**
- * CApiMailAccountsManager class summary
- * 
- * @package Accounts
- */
-class CApiMailMultiAccountsPluginAccountsManager extends \CApiMailAccountsManager
+namespace Aurora\Modules\MailMultiAccountsPlugin;
+
+class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 {
 	/**
 	 * @param CMailAccount $oAccount
