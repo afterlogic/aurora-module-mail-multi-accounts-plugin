@@ -17,7 +17,7 @@ class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 	 *
 	 * @return bool
 	 */
-	public function createAccount (CMailAccount &$oAccount)
+	public function createAccount (\CMailAccount &$oAccount)
 	{
 		$bResult = false;
 		try
