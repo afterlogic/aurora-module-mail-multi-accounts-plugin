@@ -12,11 +12,11 @@ namespace Aurora\Modules\MailMultiAccountsPlugin;
 class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 {
 	/**
-	 * @param CMailAccount $oAccount
+	 * @param Aurora\Modules\Mail\Classes\Account $oAccount
 	 *
 	 * @return bool
 	 */
-	public function createAccount (\CMailAccount &$oAccount)
+	public function createAccount (\Aurora\Modules\Mail\Classes\Account &$oAccount)
 	{
 		$bResult = false;
 		try
