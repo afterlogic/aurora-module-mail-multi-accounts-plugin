@@ -26,14 +26,14 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
 	
 	public function onBeforeCreateAccount($aArguments, &$mResult)
 	{
-		$this->oMailModule->oApiAccountsManager = new Manager('', $this);
+		$this->oMailModule->oApiAccountsManager = new Manager($this);
 		
 		return false;
 	}
 	
 	public function onAfterCreateAccount($aArguments, &$mResult)
 	{
-		$this->oMailModule->oApiAccountsManager = new Manager('', $this);
+		$this->oMailModule->oApiAccountsManager = new Manager($this);
 		
 		return false;
 	}
