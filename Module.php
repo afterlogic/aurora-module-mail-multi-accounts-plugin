@@ -46,7 +46,5 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
 	public function onAfterGetSettings($aArguments, &$mResult)
 	{
 		$mResult['AllowMultiAccounts'] = true;
-		
-		return false;
 	}
 }
