@@ -16,8 +16,6 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
 {
 	public function init() 
 	{
-		$this->oMailModule = \Aurora\System\Api::GetModule('Mail');
-	
 		$this->subscribeEvent('Mail::CreateAccount::before', array($this, 'onBeforeCreateAccount'));
 		$this->subscribeEvent('Mail::CreateAccount::after', array($this, 'onAfterCreateAccount'));
 		
@@ -26,14 +24,14 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
 	
 	public function onBeforeCreateAccount($aArguments, &$mResult)
 	{
-		$this->oMailModule->oApiAccountsManager = new Manager($this);
+		\Aurora\System\Api::GetModule('Mail')->setAccountsManager(new Manager($this));
 		
 		return false;
 	}
 	
 	public function onAfterCreateAccount($aArguments, &$mResult)
 	{
-		$this->oMailModule->oApiAccountsManager = new Manager($this);
+		\Aurora\System\Api::GetModule('Mail')->setAccountsManager(new Manager($this));
 		
 		return false;
 	}
