@@ -20,30 +20,23 @@ class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 	public function createAccount (\Aurora\Modules\Mail\Classes\Account &$oAccount)
 	{
 		$bResult = false;
-		try
+
+		if ($oAccount->validate())
 		{
-			if ($oAccount->validate())
+			if (!$this->isExists($oAccount))
 			{
-				if (!$this->isExists($oAccount))
+				if (!$this->oEavManager->saveEntity($oAccount))
 				{
-					if (!$this->oEavManager->saveEntity($oAccount))
-					{
-						throw new \Aurora\System\Exceptions\ManagerException(\Aurora\System\Exceptions\Errs::UserManager_AccountCreateFailed);
-					}
-				}
-				else
-				{
-					throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::AccountExists);
+					throw new \Aurora\System\Exceptions\ManagerException(\Aurora\System\Exceptions\Errs::UserManager_AccountCreateFailed);
 				}
 			}
+			else
+			{
+				throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::AccountExists);
+			}
+		}
 
-			$bResult = true;
-		}
-		catch (\Aurora\System\Exceptions\BaseException $oException)
-		{
-			$bResult = false;
-			$this->setLastException($oException);
-		}
+		$bResult = true;
 
 		return $bResult;
 	}
