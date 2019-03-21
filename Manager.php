@@ -8,7 +8,7 @@ namespace Aurora\Modules\MailMultiAccountsPlugin;
 
 /**
  * @license https://afterlogic.com/products/common-licensing AfterLogic Software License
- * @copyright Copyright (c) 2018, Afterlogic Corp.
+ * @copyright Copyright (c) 2019, Afterlogic Corp.
  */
 class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 {
