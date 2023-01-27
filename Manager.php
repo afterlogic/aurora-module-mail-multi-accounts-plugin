@@ -12,32 +12,27 @@ namespace Aurora\Modules\MailMultiAccountsPlugin;
  */
 class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 {
-	/**
-	 * @param \Aurora\Modules\Mail\Models\MailAccount $oAccount
-	 *
-	 * @return bool
-	 */
-	public function createAccount (\Aurora\Modules\Mail\Models\MailAccount &$oAccount)
-	{
-		$bResult = false;
+    /**
+     * @param \Aurora\Modules\Mail\Models\MailAccount $oAccount
+     *
+     * @return bool
+     */
+    public function createAccount(\Aurora\Modules\Mail\Models\MailAccount &$oAccount)
+    {
+        $bResult = false;
 
-		if ($oAccount->validate())
-		{
-			if (!$this->isExists($oAccount))
-			{
-				if (!$oAccount->save())
-				{
-					throw new \Aurora\System\Exceptions\ManagerException(\Aurora\System\Exceptions\Errs::UserManager_AccountCreateFailed);
-				}
-			}
-			else
-			{
-				throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::AccountExists);
-			}
-		}
+        if ($oAccount->validate()) {
+            if (!$this->isExists($oAccount)) {
+                if (!$oAccount->save()) {
+                    throw new \Aurora\System\Exceptions\ManagerException(\Aurora\System\Exceptions\Errs::UserManager_AccountCreateFailed);
+                }
+            } else {
+                throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::AccountExists);
+            }
+        }
 
-		$bResult = true;
+        $bResult = true;
 
-		return $bResult;
-	}
+        return $bResult;
+    }
 }
