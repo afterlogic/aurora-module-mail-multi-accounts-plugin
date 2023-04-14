@@ -6,6 +6,8 @@
 
 namespace Aurora\Modules\MailMultiAccountsPlugin;
 
+use Aurora\Modules\Mail\Module as MailModule;
+
 /**
  * @license https://afterlogic.com/products/common-licensing Afterlogic Software License
  * @copyright Copyright (c) 2023, Afterlogic Corp.
@@ -24,14 +26,14 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
 
     public function onBeforeCreateAccount($aArguments, &$mResult)
     {
-        \Aurora\System\Api::GetModule('Mail')->setAccountsManager(new Manager($this));
+        MailModule::getInstance()->setAccountsManager(new Manager($this));
 
         return false;
     }
 
     public function onAfterCreateAccount($aArguments, &$mResult)
     {
-        \Aurora\System\Api::GetModule('Mail')->setAccountsManager(new Manager($this));
+        MailModule::getInstance()->setAccountsManager(new Manager($this));
 
         return false;
     }
