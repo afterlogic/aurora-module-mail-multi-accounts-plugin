@@ -24,6 +24,15 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
         $this->subscribeEvent('Mail::GetSettings::after', array($this, 'onAfterGetSettings'));
     }
 
+    /**
+     *
+     * @return Module
+     */
+    public static function Decorator()
+    {
+        return parent::Decorator();
+    }
+
     public function onBeforeCreateAccount($aArguments, &$mResult)
     {
         MailModule::getInstance()->setAccountsManager(new Manager($this));
