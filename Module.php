@@ -33,6 +33,15 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
         return parent::Decorator();
     }
 
+    /**
+     *
+     * @return Settings
+     */
+    protected function GetModuleSettings()
+    {
+        return $this->oModuleSettings;
+    }
+
     public function onBeforeCreateAccount($aArguments, &$mResult)
     {
         MailModule::getInstance()->setAccountsManager(new Manager($this));
