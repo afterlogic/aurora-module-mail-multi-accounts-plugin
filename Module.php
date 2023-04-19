@@ -37,7 +37,7 @@ class Module extends \Aurora\System\Module\AbstractLicensedModule
      *
      * @return Settings
      */
-    protected function GetModuleSettings()
+    public function getModuleSettings()
     {
         return $this->oModuleSettings;
     }
