@@ -13,26 +13,12 @@ namespace Aurora\Modules\MailMultiAccountsPlugin;
 class Manager extends \Aurora\Modules\Mail\Managers\Accounts\Manager
 {
     /**
-     * @param \Aurora\Modules\Mail\Models\MailAccount $oAccount
+     * @param int $iUserId
      *
      * @return bool
      */
-    public function createAccount(\Aurora\Modules\Mail\Models\MailAccount &$oAccount)
+    public function canCreate($iUserId)
     {
-        $bResult = false;
-
-        if ($oAccount->validate()) {
-            if (!$this->isExists($oAccount)) {
-                if (!$oAccount->save()) {
-                    throw new \Aurora\System\Exceptions\ManagerException(\Aurora\System\Exceptions\Errs::UserManager_AccountCreateFailed);
-                }
-            } else {
-                throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::AccountExists);
-            }
-        }
-
-        $bResult = true;
-
-        return $bResult;
+        return true;
     }
 }
